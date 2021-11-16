@@ -1,7 +1,7 @@
 /**
  * Copyright 2015 Your Name <you@yourhost.com>
  *
- * @brief Description of My Awesome Game.
+ * @brief Description of My Awesome Game!
  *
  * @file main.cpp
  *
