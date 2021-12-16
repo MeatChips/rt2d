@@ -5,6 +5,7 @@ project (rt2d)
 # delete CMakeCache.txt from the build directory when you edit these options
 ####################################################################
 OPTION(MAKE_START "Make RT2D start application" ON)
+OPTION(MAKE_SEAWAR "Make RT2D start application" ON)
 OPTION(MAKE_DEMO "Make RT2D demo (tests) application" ON)
 OPTION(MAKE_CANVAS_DEMO "Make RT2D Canvas demo (tests) application" ON)
 OPTION(MAKE_FLOCKING "Make flocking application" ON)
@@ -165,6 +166,26 @@ IF(MAKE_START)
 	# Copy assets to the build directory
 	file(
 		COPY start/assets
+		DESTINATION ${CMAKE_BINARY_DIR}
+	)
+ENDIF()
+########################################################
+# SEAWAR											   #
+########################################################
+IF(MAKE_SEAWAR)
+	add_executable(seawar
+		seawar/main.cpp
+		seawar/myentity.cpp
+		seawar/myentity.h
+		seawar/myscene.cpp
+		seawar/myscene.h
+	)
+	target_link_libraries(seawar
+		${ALL_GRAPHICS_LIBS}
+	)
+	# Copy assets to the build directory
+	file(
+		COPY seawar/assets
 		DESTINATION ${CMAKE_BINARY_DIR}
 	)
 ENDIF()
