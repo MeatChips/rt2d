@@ -13,6 +13,7 @@
 
 #include "myentity.h"
 #include "background.h"
+#include "enemyoe.h"
 
 /// @brief The MyScene class is the Scene implementation.
 class MyScene : public Scene
@@ -32,6 +33,7 @@ private:
 	/// @brief the rotating square in the middle of the screen
 	MyEntity* myentity;
 	Background* background;
+	EnemyOE* enemyoe;
 };
 
 #endif /* SCENE00_H */

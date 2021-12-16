@@ -17,8 +17,10 @@ MyScene::MyScene() : Scene()
 	// the Sprite is added in Constructor of MyEntity.
 	myentity = new MyEntity();
 	background = new Background();
+	enemyoe = new EnemyOE();
 	myentity->position = Point2(SWIDTH/2, SHEIGHT/2);
 	background->position = Point2(SWIDTH/2, SHEIGHT/2);
+	enemyoe->position = Point2(SWIDTH/2, SHEIGHT/2);
 	float x;
 	float y;
 	float z;
@@ -27,6 +29,7 @@ MyScene::MyScene() : Scene()
 	// add myentity to this Scene as a child.
 	this->addChild(background);
 	this->addChild(myentity);
+	this->addChild(enemyoe);
 }
 
 
@@ -35,12 +38,14 @@ MyScene::~MyScene()
 	// deconstruct and delete the Tree
 	this->removeChild(background);
 	this->removeChild(myentity);
+	this->removeChild(enemyoe);
 
 
 
 	// delete myentity from the heap (there was a 'new' in the constructor)
 	delete background;
 	delete myentity;
+	delete enemyoe;
 }
 
 
