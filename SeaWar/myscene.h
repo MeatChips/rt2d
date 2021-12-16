@@ -12,6 +12,7 @@
 #include <rt2d/scene.h>
 
 #include "myentity.h"
+#include "background.h"
 
 /// @brief The MyScene class is the Scene implementation.
 class MyScene : public Scene
@@ -30,6 +31,7 @@ public:
 private:
 	/// @brief the rotating square in the middle of the screen
 	MyEntity* myentity;
+	Background* background;
 };
 
 #endif /* SCENE00_H */

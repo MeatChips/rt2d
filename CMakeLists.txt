@@ -179,6 +179,8 @@ IF(MAKE_SEAWAR)
 		seawar/myentity.h
 		seawar/myscene.cpp
 		seawar/myscene.h
+		seawar/background.cpp
+		seawar/background.h
 	)
 	target_link_libraries(seawar
 		${ALL_GRAPHICS_LIBS}

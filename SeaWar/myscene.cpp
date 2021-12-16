@@ -8,6 +8,7 @@
 #include <sstream>
 
 #include "myscene.h"
+#include "background.h"
 
 MyScene::MyScene() : Scene()
 {
@@ -15,13 +16,16 @@ MyScene::MyScene() : Scene()
 	// create a single instance of MyEntity in the middle of the screen.
 	// the Sprite is added in Constructor of MyEntity.
 	myentity = new MyEntity();
+	background = new Background();
 	myentity->position = Point2(SWIDTH/2, SHEIGHT/2);
+	background->position = Point2(SWIDTH/2, SHEIGHT/2);
 	float x;
 	float y;
 	float z;
 
 	// create the scene 'tree'
 	// add myentity to this Scene as a child.
+	this->addChild(background);
 	this->addChild(myentity);
 }
 
@@ -29,11 +33,13 @@ MyScene::MyScene() : Scene()
 MyScene::~MyScene()
 {
 	// deconstruct and delete the Tree
+	this->removeChild(background);
 	this->removeChild(myentity);
 
 
 
 	// delete myentity from the heap (there was a 'new' in the constructor)
+	delete background;
 	delete myentity;
 }
 
