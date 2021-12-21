@@ -8,6 +8,8 @@
 
 EnemyOE::EnemyOE() : Entity()
 {
+	this->scale.x = .6;
+	this->scale.y = .6;
 	this->addSprite("assets/EnemyOneEye.tga");
 }
 

@@ -20,10 +20,7 @@ MyScene::MyScene() : Scene()
 	enemyoe = new EnemyOE();
 	myentity->position = Point2(SWIDTH/2, SHEIGHT/2);
 	background->position = Point2(SWIDTH/2, SHEIGHT/2);
-	enemyoe->position = Point2(SWIDTH/2, SHEIGHT/2);
-	float x;
-	float y;
-	float z;
+	enemyoe->position = Point2(SWIDTH/1.2, SHEIGHT/1.2);
 
 	// create the scene 'tree'
 	// add myentity to this Scene as a child.
@@ -48,19 +45,18 @@ MyScene::~MyScene()
 	delete enemyoe;
 }
 
-
 void MyScene::update(float deltaTime)
 {
-	// ###############################################################
+	// ###################################################################
 	// Escape key stops the Scene
-	// ###############################################################
+	// ###################################################################
 	if (input()->getKeyUp(KeyCode::Escape)) {
 		this->stop();
 	}
 
-	// ###############################################################
-	// Movement boat / WASD movement
-	// ###############################################################
+	// ###################################################################
+	// Movement Boat / WASD movement
+	// ###################################################################
 
 	// Variables
 	float a = myentity->rotation.z;
@@ -98,9 +94,36 @@ void MyScene::update(float deltaTime)
 		//std::cout << "LEFT";
 	}
 
-	// Borders
+	// ###################################################################
+	// Borders                                                           
+	// ###################################################################
+
+	// Player
 	if (myentity->position.x < 0) { myentity->position.x = 0; }
 	if (myentity->position.x > SWIDTH) { myentity->position.x = SWIDTH; }
 	if (myentity->position.y < 0) { myentity->position.y = 0; }
 	if (myentity->position.y > SHEIGHT) { myentity->position.y = SHEIGHT; }
+
+	// Enemy
+	if (enemyoe->position.x < 0) { enemyoe->position.x = 0; }
+	if (enemyoe->position.x > SWIDTH) { enemyoe->position.x = SWIDTH; }
+	if (enemyoe->position.y < 0) { enemyoe->position.y = 0; }
+	if (enemyoe->position.y > SHEIGHT) { enemyoe->position.y = SHEIGHT; }
+
+	// ###################################################################
+	// Movement EnemyOneEye
+	// ###################################################################
+
+	// Variables
+	float movespeedE = .18;
+	Vector2 AR = myentity->position - enemyoe->position;
+	float b = enemyoe->rotation.z;
+	float angle = AR.getAngle();
+	
+	// Rotate towards player
+	enemyoe->rotation.z = angle + 90;
+
+	// Moving on X-axis / Y-axis
+	enemyoe->position.x += movespeedE * sin(b);
+	enemyoe->position.y -= movespeedE * cos(b);
 }
