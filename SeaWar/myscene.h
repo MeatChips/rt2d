@@ -14,6 +14,8 @@
 #include "myentity.h"
 #include "background.h"
 #include "enemyoe.h"
+#include "crosshair.h"
+#include "bullet.h"
 
 /// @brief The MyScene class is the Scene implementation.
 class MyScene : public Scene
@@ -28,12 +30,18 @@ public:
 	/// @param deltaTime the elapsed time in seconds
 	/// @return void
 	virtual void update(float deltaTime);
+	virtual void updateBullets(float deltaTime);
+	//virtual void kaboom(float deltaTime);
 
 private:
 	/// @brief the rotating square in the middle of the screen
 	MyEntity* myentity;
 	Background* background;
 	EnemyOE* enemyoe;
+	Crosshair* crosshair;
+	Bullet* bullet;
+
+	std::vector<Bullet*> bullets;
 };
 
 #endif /* SCENE00_H */

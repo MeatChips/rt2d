@@ -4,21 +4,21 @@
  * Copyright 2015 Your Name <you@yourhost.com>
  */
 
-#include "enemyoe.h"
+#include "crosshair.h"
 
-EnemyOE::EnemyOE() : Entity()
+Crosshair::Crosshair() : Entity()
 {
-	this->scale.x = .6;
-	this->scale.y = .6;
-	this->addSprite("assets/EnemyOneEye.tga");
+	this->scale.x = 1;
+	this->scale.y = 1;
+	this->addSprite("assets/CrosshairRed2.tga");
 }
 
-EnemyOE::~EnemyOE()
+Crosshair::~Crosshair()
 {
 
 }
 
-void EnemyOE::update(float deltaTime)
+void Crosshair::update(float deltaTime)
 {
 	// ###############################################################
 	// Rotate

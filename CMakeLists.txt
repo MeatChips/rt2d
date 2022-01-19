@@ -183,6 +183,10 @@ IF(MAKE_SEAWAR)
 		seawar/background.h
 		seawar/enemyoe.cpp
 		seawar/enemyoe.h
+		seawar/crosshair.cpp
+		seawar/crosshair.h
+		seawar/bullet.cpp
+		seawar/bullet.h
 	)
 	target_link_libraries(seawar
 		${ALL_GRAPHICS_LIBS}

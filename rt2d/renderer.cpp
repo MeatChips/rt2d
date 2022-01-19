@@ -81,7 +81,8 @@ int Renderer::init()
 	glfwSetInputMode(_window, GLFW_STICKY_KEYS, GL_TRUE);
 
 	// MS Windows only
-	//glfwSetCursorPos(_window, SWIDTH/2, SHEIGHT/2);
+	glfwSetCursorPos(_window, SWIDTH/2, SHEIGHT/2);
+	glfwSetInputMode(_window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);;
 
 	// Black background
 	glClearColor(CLEARCOLOR_RED, CLEARCOLOR_GREEN, CLEARCOLOR_BLUE, 1.0f);
