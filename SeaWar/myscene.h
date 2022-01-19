@@ -39,7 +39,6 @@ private:
 	Background* background;
 	EnemyOE* enemyoe;
 	Crosshair* crosshair;
-	Bullet* bullet;
 
 	std::vector<Bullet*> bullets;
 };

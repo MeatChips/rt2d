@@ -20,19 +20,16 @@ MyScene::MyScene() : Scene()
 	background = new Background();
 	enemyoe = new EnemyOE();
 	crosshair = new Crosshair();
-	bullet = new Bullet();
 	myentity->position = Point2(SWIDTH/2, SHEIGHT/2);
 	background->position = Point2(SWIDTH/2, SHEIGHT/2);
 	enemyoe->position = Point2(SWIDTH/1.2, SHEIGHT/1.2);
 	crosshair->position = Point2(SWIDTH/3.2, SHEIGHT/3.2);
-	bullet->position = Point2(SWIDTH/2, SHEIGHT/2);
 
 	// create the scene 'tree'
 	// add myentity to this Scene as a child.
 	this->addChild(background);
 	this->addChild(myentity);
 	this->addChild(enemyoe);
-	this->addChild(bullet);
 	this->addChild(crosshair);
 }
 
@@ -43,14 +40,12 @@ MyScene::~MyScene()
 	this->removeChild(myentity);
 	this->removeChild(enemyoe);
 	this->removeChild(crosshair);
-	this->removeChild(bullet);
 
 	// delete myentity from the heap (there was a 'new' in the constructor)
 	delete background;
 	delete myentity;
 	delete enemyoe;
 	delete crosshair;
-	delete bullet;
 }
 
 void MyScene::updateBullets(float deltaTime)
@@ -86,22 +81,22 @@ void MyScene::update(float deltaTime)
 
 	// Variables
 	float a = myentity->rotation.z;
-	float movespeedF = .17;
-	float movespeedB = .08;
+	float movespeedF = 100;
+	float movespeedB = 57;
 	float rotspeed = 2;
 
 	// Forward
 	if (input()->getKey(KeyCode::W)) {
-		myentity->position.x -= movespeedF * sin(a);
-		myentity->position.y += movespeedF * cos(a);
+		myentity->position.x -= movespeedF * sin(a) * deltaTime;
+		myentity->position.y += movespeedF * cos(a) * deltaTime;
 												   
 		//std::cout << "FORWARD"; 				   
 	}											   
 		
 	// Backwards
 	if (input()->getKey(KeyCode::S)) {			   
-		myentity->position.x += movespeedB * sin(a);
-		myentity->position.y -= movespeedB * cos(a);
+		myentity->position.x += movespeedB * sin(a) * deltaTime;
+		myentity->position.y -= movespeedB * cos(a) * deltaTime;
 
 		//std::cout << "BACKWARDS";
 	}
@@ -142,18 +137,12 @@ void MyScene::update(float deltaTime)
 	if (crosshair->position.y < 0) { crosshair->position.y = 0; }
 	if (crosshair->position.y > SHEIGHT) { crosshair->position.y = SHEIGHT; }
 
-	// Bullet
-	if (bullet->position.x < 0) { bullet->position.x = 0; }
-	if (bullet->position.x > SWIDTH) { bullet->position.x = SWIDTH; }
-	if (bullet->position.y < 0) { bullet->position.y = 0; }
-	if (bullet->position.y > SHEIGHT) { bullet->position.y = SHEIGHT; }
-
 	// ###################################################################
 	// Movement EnemyOneEye
 	// ###################################################################
 
 	// Variables
-	float movespeedE = .13;
+	float movespeedE = 85;
 	Vector2 AR = myentity->position - enemyoe->position;
 	float b = enemyoe->rotation.z;
 	float angle = AR.getAngle();
@@ -162,8 +151,8 @@ void MyScene::update(float deltaTime)
 	enemyoe->rotation.z = angle + 90;
 
 	// Moving on X-axis / Y-axis
-	enemyoe->position.x += movespeedE * sin(b);
-	enemyoe->position.y -= movespeedE * cos(b);
+	enemyoe->position.x += movespeedE * sin(b) * deltaTime;
+	enemyoe->position.y -= movespeedE * cos(b) * deltaTime;
 
 	// ###################################################################
 	// Crosshair movement 
