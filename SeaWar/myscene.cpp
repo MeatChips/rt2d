@@ -66,6 +66,7 @@ void MyScene::updateBullets(float deltaTime)
 //	}
 //}
 
+
 void MyScene::update(float deltaTime)
 {
 	// ###################################################################
@@ -181,7 +182,7 @@ void MyScene::update(float deltaTime)
 	Vector2 v = shootpos - shippos;
 
 	// Bullet flies towards crosshair
-	if (input()->getMouseDown(GLFW_MOUSE_BUTTON_LEFT)) {
+	if (input()->getMouseDown(0)) {
 		Bullet* b = new Bullet();
 		addChild(b);
 		bullets.push_back(b);
@@ -191,7 +192,7 @@ void MyScene::update(float deltaTime)
 		b->velocity += b->distance_travelled;
 		if (b->distance_travelled > v.getLength()) {
 			//kaboom();
-			//std::cout << b->distance_travelled;
+			//std::cout << b->distance_travelled << std::endl;
 		}
 
 		std::cout << "SHOOT";

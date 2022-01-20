@@ -8,8 +8,9 @@
 
 Background::Background() : Entity()
 {
-	this->scale.x = PI;
-	this->addSprite("assets/Background.tga");
+	this->scale.x = .64;
+	this->scale.y = .36;
+	this->addSprite("assets/Background4.tga");
 }
 
 Background::~Background()
