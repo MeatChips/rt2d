@@ -6,7 +6,7 @@
 
 #include "crosshair.h"
 
-Crosshair::Crosshair() : Entity()
+Crosshair::Crosshair() : extraentity()
 {
 	this->scale.x = 1;
 	this->scale.y = 1;

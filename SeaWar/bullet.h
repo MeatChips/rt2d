@@ -9,10 +9,10 @@
 #ifndef BULLET_H
 #define BULLET_H
 
-#include <entity.h>
+#include "extraentity.h"
 
 /// @brief The MyEntity class is the Entity implementation.
-class Bullet : public Entity
+class Bullet : public extraentity
 {
 public:
 	/// @brief Constructor

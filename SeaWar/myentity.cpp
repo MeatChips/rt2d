@@ -6,7 +6,7 @@
 
 #include "myentity.h"
 
-MyEntity::MyEntity() : Entity()
+MyEntity::MyEntity() : extraentity()
 {
 	this->rotation.z = PI;
 	this->addSprite("assets/PlayerBoat.tga");

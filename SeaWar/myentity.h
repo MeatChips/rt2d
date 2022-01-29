@@ -9,10 +9,10 @@
 #ifndef MYENTITY_H
 #define MYENTITY_H
 
-#include <rt2d/entity.h>
+#include "extraentity.h"
 
 /// @brief The MyEntity class is the Entity implementation.
-class MyEntity : public Entity
+class MyEntity : public extraentity
 {
 public:
 	/// @brief Constructor

@@ -6,7 +6,7 @@
 
 #include "background.h"
 
-Background::Background() : Entity()
+Background::Background() : extraentity()
 {
 	this->scale.x = .64;
 	this->scale.y = .36;

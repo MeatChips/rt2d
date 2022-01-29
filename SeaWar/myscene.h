@@ -10,12 +10,15 @@
 #define MYSCENE_H
 
 #include <rt2d/scene.h>
+#include <rt2d/text.h>
 
 #include "myentity.h"
 #include "background.h"
 #include "enemyoe.h"
 #include "crosshair.h"
 #include "bullet.h"
+#include "collider.h"
+#include "extraentity.h"
 
 /// @brief The MyScene class is the Scene implementation.
 class MyScene : public Scene
@@ -30,8 +33,11 @@ public:
 	/// @param deltaTime the elapsed time in seconds
 	/// @return void
 	virtual void update(float deltaTime);
-	virtual void updateBullets(float deltaTime);
-	//virtual void kaboom(float deltaTime);
+	virtual void updateBullets(float deltaTime); 
+	virtual void spawnEnemies();
+	virtual void enemyMovement(float deltaTime);
+
+	int spawnSpeed = 5;
 
 private:
 	/// @brief the rotating square in the middle of the screen
@@ -40,7 +46,18 @@ private:
 	EnemyOE* enemyoe;
 	Crosshair* crosshair;
 
+	Timer sTimer;
+	Timer aliveTimer;
+
+	Collider* square1;
+	Collider* square2;
+	Collider* circle1;
+
 	std::vector<Bullet*> bullets;
+	std::vector<EnemyOE*> enemies;
+
+	Text* scoretext;
+	int score;
 };
 
 #endif /* SCENE00_H */

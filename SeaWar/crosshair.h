@@ -9,10 +9,10 @@
 #ifndef CROSSHAIR_H
 #define CROSSHAIR_H
 
-#include <entity.h>
+#include "extraentity.h"
 
 /// @brief The MyEntity class is the Entity implementation.
-class Crosshair : public Entity
+class Crosshair : public extraentity
 {
 public:
 	/// @brief Constructor

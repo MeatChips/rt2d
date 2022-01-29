@@ -6,11 +6,12 @@
 
 #include "enemyoe.h"
 
-EnemyOE::EnemyOE() : Entity()
+EnemyOE::EnemyOE() : extraentity()
 {
 	this->scale.x = .6;
 	this->scale.y = .6;
 	this->addSprite("assets/EnemyOneEye.tga");
+
 }
 
 EnemyOE::~EnemyOE()
@@ -27,4 +28,6 @@ void EnemyOE::update(float deltaTime)
 	//if (this->rotation.z > TWO_PI) {
 	//	this->rotation.z -= TWO_PI;
 	//}
+
+
 }

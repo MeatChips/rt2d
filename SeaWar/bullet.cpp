@@ -6,7 +6,7 @@
 
 #include "bullet.h"
 
-Bullet::Bullet() : Entity()
+Bullet::Bullet() : extraentity()
 {
 	this->scale.x = .25;
 	this->scale.y = .25;

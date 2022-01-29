@@ -187,6 +187,8 @@ IF(MAKE_SEAWAR)
 		seawar/crosshair.h
 		seawar/bullet.cpp
 		seawar/bullet.h
+		seawar/collider.h
+		seawar/extraentity.h
 	)
 	target_link_libraries(seawar
 		${ALL_GRAPHICS_LIBS}

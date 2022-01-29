@@ -9,10 +9,10 @@
 #ifndef BACKGROUND_H
 #define BACKGROUND_H
 
-#include <entity.h>
+#include "extraentity.h"
 
 /// @brief The MyEntity class is the Entity implementation.
-class Background : public Entity
+class Background : public extraentity
 {
 public:
 	/// @brief Constructor
