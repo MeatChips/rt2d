@@ -54,6 +54,19 @@ MyScene::~MyScene()
 	delete crosshair;
 }
 
+void MyScene::updateBullets(float deltaTime)
+{
+	// Deleting bullets when they go outside the screen
+	for (int i = bullets.size() - 1; i >= 0; i--) { // backwards!!!
+		if (bullets[i]->position.x > SWIDTH || bullets[i]->position.x < 0 || bullets[i]->position.y < 0 || bullets[i]->position.y > SHEIGHT) {
+			std::cout << "-- deleting Bullet " << i << " : (" << bullets[i]->position.x << "," << bullets[i]->position.y << ")" << std::endl;
+			this->removeChild(bullets[i]);
+			delete bullets[i]; // delete from the heap first
+			bullets.erase(bullets.begin() + i); // then, remove from the list
+		}
+	}
+}
+
 void MyScene::enemyMovement(float deltaTime) {
 
 	// Movement of the enemy (towards player)
@@ -87,18 +100,7 @@ void MyScene::spawnEnemies()
 	std::cout << "SPAWN ENEMY" << std::endl;
 }
 
-void MyScene::updateBullets(float deltaTime)
-{
-	// Deleting bullets when they go outside the screen
-	for (int i = bullets.size() - 1; i >= 0; i--) { // backwards!!!
-		if (bullets[i]->position.x > SWIDTH || bullets[i]->position.x < 0 || bullets[i]->position.y < 0 || bullets[i]->position.y > SHEIGHT) {
-			std::cout << "-- deleting Bullet " << i << " : (" << bullets[i]->position.x << "," << bullets[i]->position.y << ")" << std::endl;
-			this->removeChild(bullets[i]);
-			delete bullets[i]; // delete from the heap first
-			bullets.erase(bullets.begin() + i); // then, remove from the list
-		}
-	}
-}
+
 
 void MyScene::update(float deltaTime)
 {
